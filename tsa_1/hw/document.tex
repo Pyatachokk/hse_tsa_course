@@ -1,0 +1,125 @@
+\documentclass[a4paper,12pt]{article}
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+%%% Дополнительная работа с математикой
+\usepackage{amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{amsmath}
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+\usepackage[left = 2cm, right = 2cm, top = 2cm, bottom = 2cm]{geometry}
+
+\usepackage{graphicx}
+
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Шрифты
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков и таблиц текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+\usepackage{upgreek}
+\usepackage{enumerate}
+\usepackage{ dsfont }
+\usepackage[weather]{ifsym}
+
+%%% Цветной текст
+
+\usepackage{movie15}
+% in preamble
+\usepackage{graphicx}
+\usepackage{animate}
+
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+
+%%% Гиперссылки
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\definecolor{linkcolor}{HTML}{199B03} % цвет ссылок
+\definecolor{urlcolor}{HTML}{199B03} % цвет гиперссылок
+
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+
+
+%%% Заголовок
+\author{Zekhov Matvei}
+\title{Title}
+\date{\today}
+
+
+\begin{document}
+		Работу следует представить в виде отчёта в pdf формате. В начале работы должен идти текст с графиками, в конце работы в качестве приложения должен идти код. За графики без подписанных осей и заголовков оценка будет снижена. Общий объем текста (без приложений) должен составлять не более 10 страниц.
+	\begin{enumerate}
+			\item (10 баллов) Рассмотрим $M A(2)$ процесс $y_t=10+u_t+3 u_{t-1}$, где величины $u_t$ независимы и нормально распределены $\mathcal{N}(0 ; 4)$.
+		\begin{enumerate}
+				\item Рассчитайте теоретическую автокорреляционную функцию процесса $A C F, \rho_k$.
+			\item Рассчитайте первые два значения частной автокорреляционной функции $P A C F, \phi_{11}, \phi_{22}$.
+			\item Сгенерируйте траекторию данного процесса длиной 30 наблюдений. Постройте график ряда, график первых десяти значений выборочной $A C F$ и $P A C F$.
+			\item Повторите предыдущий пункт для 300 наблюдений. Верно ли, что с ростом числа наблюдений выборочная $A C F$ сходится к истинной $A C F$, а выборочная $P A C F$ к истинной $P A C F$ ?
+		\end{enumerate}
+	
+	\item (10 баллов) Рассмотрим случайное блуждание $y_t=1+y_{t-1}+u_t$, где величины $u_t$ независимы и нормально распределены $\mathcal{N}(0 ; 4)$, а $y_0=10$.
+	
+	\begin{enumerate}
+		\item Рассчитайте $\mathbb{E}\left(y_t\right), \mathbb{V} \operatorname{ar}\left(y_t\right), \operatorname{Cov}\left(y_{10}, y_{20}\right)$.
+		\item Сравните $\operatorname{Corr}\left(y_{10}, y_{20}\right)$ и $\operatorname{Corr}\left(y_{110}, y_{120}\right)$.
+		\item Сгенерируйте траекторию данного процесса длиной 30 наблюдений. Постройте график ряда, график первых десяти значений выборочной $A C F$ и $P A C F$.
+		\item Повторите предыдущий пункт для 300 наблюдений. Верно ли, что с ростом числа наблюдений выборочная $A C F$ сходится к истинной $A C F$, а выборочная $P A C F$ к истинной $P A C F$ ?
+	\end{enumerate}
+
+	\item (20 баллов) Возьмите любой несезонный ряд годовой периодичности. Можно взять ряд с httрs: //fedstat.ru/, http://sophist.hse.ru/ или других источников.
+	
+	\begin{enumerate}
+		\item Постройте график ряда, графики выборочных $A C F$ и $P A C F$.
+		\item Визуально оцените, есть ли тренд? Похож ли процесс на стационарный?
+		\item Оцените для ряда $\operatorname{ETS}(A A N)$ модель.
+		\item Выпишите полученные уравнение, использовав оценённые значения параметров вместо параметров.
+		\item Получите $80 \%$-й доверительный интервал на один и два шага вперёд «руками», исходя из выписанных уравнений.
+		\item Получите 80\%-й доверительный интервал на один и два шага вперёд встроенными функциями.
+		\item Постройте график прогноза и сам ряд.
+	\end{enumerate}
+	\newpage
+	\item (30 баллов) Возьмите любой сезонный ряд квартальной или месячной периодичности.
+	
+	\begin{enumerate}
+	\item Постройте разложение ряда на составляющие, используя $S T L$ алгоритм. Визуализируйте результат для трех разных значений силы сглаживания сезонности. Кратко прокомментируйте.
+	\item Постройте разложение ряда на составляющие, используя $\operatorname{ETS}(A A A)$ модель.
+	\item Разделите данные на обучающую и тестовую выборку, выделив на тестовую выборку два года наблюдений.
+	\item Оцените $E T S(A A A), E T S(M A M)$, сезонную наивную модель и примените тета-метод с $S T L$ разложением по умолчанию и $\operatorname{ETS} S(A A A)$ для логарифма ряда.
+	\item Для каждого подхода найдите $M A S E$ на тестовой выборке.
+	\item Постройте прогноз, усредняющий прогнозы двух лидирующих по $M A S E$ подхода. Удалось ли обыграть два усредняемых подхода?
+	
+	\end{enumerate}
+	
+
+	
+	\end{enumerate}
+
+	
+
+\end{document}
